@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EnterParadigm</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&family=IBM+Plex+Mono&family=Cinzel&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: radial-gradient(circle at 20% 40%, #0a0a0a, #010101);
+      font-family: 'Space Grotesk', sans-serif;
+      color: #e5e7eb;
+    }
+    .terminal {
+      font-family: 'IBM Plex Mono', monospace;
+      color: #10b981;
+    }
+    .glass {
+      backdrop-filter: blur(14px);
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .gradient-text {
+      background: linear-gradient(to right, #14b8a6, #818cf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .glow {
+      box-shadow: 0 0 20px rgba(129, 140, 248, 0.4);
+    }
+  </style>
+</head>
+<body class="overflow-x-hidden">
+
+  <!-- Hero Section -->
+  <section class="min-h-screen flex items-center justify-center text-center px-4">
+    <div class="max-w-4xl mx-auto relative">
+      <h1 class="text-5xl md:text-6xl font-bold gradient-text font-[Cinzel] tracking-wide mb-6">EnterParadigm</h1>
+      <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-12">
+        Access the sovereign stack.<br />
+        Unveil ParadigmOS. Interface with Freedom Engine. Engage the Code.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- ParadigmOS -->
+        <div class="glass p-6 rounded-xl hover:scale-105 transition glow">
+          <h2 class="text-xl font-semibold text-white mb-2">🧠 ParadigmOS</h2>
+          <p class="text-sm text-gray-300 mb-3">The modular sovereign operating system. Local-first. Agentic. Legendary.</p>
+          <a href="/paradigmos" class="text-indigo-400 hover:underline terminal text-sm">> boot ParadigmOS</a>
+        </div>
+        <!-- Peradime -->
+        <div class="glass p-6 rounded-xl hover:scale-105 transition glow">
+          <h2 class="text-xl font-semibold text-white mb-2">📁 Peradime</h2>
+          <p class="text-sm text-gray-300 mb-3">Your creative cockpit. Local vectors. Agent control. Zero middleware.</p>
+          <a href="/peradime" class="text-indigo-400 hover:underline terminal text-sm">> launch Peradime</a>
+        </div>
+        <!-- CreatorOS -->
+        <div class="glass p-6 rounded-xl hover:scale-105 transition glow">
+          <h2 class="text-xl font-semibold text-white mb-2">🎛 CreatorOS</h2>
+          <p class="text-sm text-gray-300 mb-3">AI-powered storywork engine. Modular pipelines. Sovereign creator stack.</p>
+          <a href="/creatoros" class="text-indigo-400 hover:underline terminal text-sm">> deploy CreatorOS</a>
+        </div>
+      </div>
+
+      <!-- Sub-grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+        <!-- Freedom Engine -->
+        <div class="glass p-6 rounded-xl hover:scale-105 transition glow">
+          <h2 class="text-xl font-semibold text-white mb-2">🗡 Freedom Engine</h2>
+          <p class="text-sm text-gray-300 mb-3">The sovereign core. Voice-command, AI agents, and terminal fusion inside your homebase.</p>
+          <a href="/freedomengine" class="text-indigo-400 hover:underline terminal text-sm">> initiate Freedom Engine</a>
+        </div>
+        <!-- Sovereign Stack -->
+        <div class="glass p-6 rounded-xl hover:scale-105 transition glow">
+          <h2 class="text-xl font-semibold text-white mb-2">🧬 Sovereign Stack</h2>
+          <p class="text-sm text-gray-300 mb-3">Git-linked microservices. Self-hosted LLMs. Privacy by default. Welcome to root access.</p>
+          <a href="/stack" class="text-indigo-400 hover:underline terminal text-sm">> enter Stack Mode</a>
+        </div>
+      </div>
+
+      <!-- Terminal Call -->
+      <div class="mt-16 text-left text-sm text-green-400 bg-black/30 p-4 rounded-lg font-mono">
+        <span class="block">~/init> You are not here by accident...</span>
+        <span class="block">~/gate> Verify your consciousness. Connect your signal. Forge your code.</span>
+        <span class="block">~/launch> <span class="text-white">enterparadigm --unlock</span></span>
+      </div>
+
+      <!-- Contact -->
+      <div class="mt-16 text-center text-sm text-gray-500">
+        &copy; 2025 EnterParadigm • Built by KXROS. Power flows to those who code it.
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
