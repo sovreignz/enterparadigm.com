@@ -1,346 +1,408 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Enter Paradigm — Operating System for Human Potential</title>
-  <meta name="description" content="Enter Paradigm is an operating system for human potential. Prep • Navigate • Immerse • Accelerate • Operate." />
-  <meta property="og:title" content="Enter Paradigm — Operating System for Human Potential" />
-  <meta property="og:description" content="Prep • Navigate • Immerse • Accelerate • Operate." />
-  <meta name="theme-color" content="#0b0f1a" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#0b0f1a;          /* deep space */
-      --glass:#0f1729aa;     /* glass surface */
-      --glass-strong:#0f1729e6;
-      --text:#e6ecff;
-      --muted:#a8b2d1;
-      --accent:#6ee7ff;      /* cyan */
-      --accent2:#ffb86b;     /* amber */
-      --success:#7bf1a8;     /* mint */
-      --danger:#ff6b6b;      
-      --card-radius:22px;
-      --blur:16px;
-      --shadow:0 20px 60px rgba(0,0,0,.45);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif; color:var(--text);
-      background: radial-gradient(1200px 800px at 80% -10%, rgba(255,184,107,.15), transparent 60%),
-                  radial-gradient(900px 600px at -10% 120%, rgba(110,231,255,.10), transparent 60%),
-                  linear-gradient(180deg,#0b0f1a 0%, #0a0e18 100%);
-      overflow-x:hidden;
-    }
-    a{color:inherit}
-    /* Glowing inverted triangle backdrop */
-    .halo{
-      position:fixed; inset:auto auto 10% 50%; width:540px; aspect-ratio:1/1; pointer-events:none; transform:translateX(-50%);
-      filter:blur(20px) drop-shadow(0 0 40px rgba(255,184,107,.45)); opacity:.55; mix-blend-mode:screen;
-    }
-    .halo::before{content:""; position:absolute; inset:0; background:radial-gradient(closest-side, rgba(255,205,130,.95), rgba(255,205,130,.25), transparent 70%);
-      clip-path:polygon(50% 82%, 10% 18%, 90% 18%); border-radius:24px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Paradigm | An Operating System for Human Potential</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-    header{
-      position:sticky; top:0; z-index:40; backdrop-filter:saturate(130%) blur(10px); background:linear-gradient(180deg, rgba(10,14,24,.75), rgba(10,14,24,.45));
-      border-bottom:1px solid rgba(110,231,255,.12);
-    }
-    .nav{max-width:1200px; margin:0 auto; padding:16px 20px; display:flex; align-items:center; justify-content:space-between}
-    .brand{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.5px}
-    .glyph{width:22px; height:22px; position:relative}
-    .glyph::before{content:""; position:absolute; inset:0; background:conic-gradient(from 200deg, #ffb86b, #6ee7ff, #ffb86b); filter:blur(2px);
-      clip-path:polygon(50% 85%, 8% 15%, 92% 15%); border-radius:8px}
-    .nav a{opacity:.85; text-decoration:none; font-weight:600}
-    .nav .links{display:flex; gap:18px}
+    <style>
+        /* Global Design System & Custom Styles */
+        :root {
+            --sovereign-black: #0A0A0A;
+            --paradigm-white: #F9F9F9;
+            --cerulean-start: #00AEEF;
+            --cerulean-end: #005F99;
+            --sovereign-gold: #D4AF37;
+            --background-neutral: #1A1A1A;
+            --glass-bg: rgba(21, 21, 21, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --shadow-color: rgba(0, 0, 0, 0.35);
+        }
 
-    .hero{max-width:1200px; margin:48px auto 28px; padding:0 20px; display:grid; grid-template-columns:1.2fr .8fr; gap:28px}
-    @media (max-width: 960px){.hero{grid-template-columns:1fr; gap:16px}}
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: var(--sovereign-black);
+            color: var(--paradigm-white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
 
-    .panel{
-      background:linear-gradient(180deg, rgba(18,26,44,.5), rgba(12,18,32,.55));
-      border:1px solid rgba(110,231,255,.12);
-      border-radius:28px; padding:28px; box-shadow:var(--shadow);
-      backdrop-filter: blur(var(--blur)) saturate(130%);
-    }
-    .kicker{color:var(--accent); font-weight:700; letter-spacing:.12em; text-transform:uppercase; font-size:.78rem}
-    h1{margin:.25em 0 .25em; font-size:clamp(32px, 4.2vw, 56px); line-height:1.04}
-    .sub{color:var(--muted); font-size:1.05rem; max-width:60ch}
-    .cta-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:22px}
+        /* Animated Grid Background for Hero */
+        .animated-grid-bg {
+            background-color: var(--sovereign-black);
+            background-image:
+                linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: moveGrid 20s linear infinite;
+        }
 
-    .btn{position:relative; display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:14px; font-weight:700; text-decoration:none; cursor:pointer; border:1px solid transparent}
-    .btn.primary{background:linear-gradient(90deg, #6ee7ff, #9ae6b4); color:#08111e;}
-    .btn.ghost{background:transparent; border-color:rgba(110,231,255,.18); color:var(--text)}
-    .btn .dot{width:8px; height:8px; border-radius:50%; background:var(--success); box-shadow:0 0 12px var(--success)}
+        @keyframes moveGrid {
+            from { background-position: 0 0; }
+            to { background-position: 40px 40px; }
+        }
+        
+        /* Glassmorphism Card Style */
+        .glass-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px; /* 2xl */
+            box-shadow: 0 8px 24px var(--shadow-color);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
 
-    .grid-wrap{max-width:1200px; margin:10px auto 90px; padding:0 20px}
-    .grid-head{display:flex; align-items:center; justify-content:space-between; margin:18px 6px}
-    .grid-head small{color:var(--muted)}
+        .glass-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 20px 2px var(--cerulean-start), 0 8px 32px var(--shadow-color);
+            border-color: rgba(0, 174, 239, 0.5);
+        }
 
-    .grid{display:grid; grid-template-columns:repeat(5, 1fr); gap:18px}
-    @media (max-width: 1200px){.grid{grid-template-columns:repeat(3, 1fr)}}
-    @media (max-width: 760px){.grid{grid-template-columns:repeat(1, 1fr)}}
+        /* Button Styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+        }
+        .btn-gradient {
+            background-image: linear-gradient(135deg, var(--cerulean-start), var(--cerulean-end));
+            color: var(--paradigm-white);
+        }
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 174, 239, 0.4);
+        }
+        .btn-outline {
+            border: 2px solid var(--glass-border);
+            color: var(--paradigm-white);
+        }
+        .btn-outline:hover {
+            background-color: var(--glass-border);
+            border-color: var(--paradigm-white);
+        }
 
-    /* Card */
-    .card{position:relative; perspective:1000px; border-radius:var(--card-radius); height:260px}
-    .card-inner{position:absolute; inset:0; transition:transform .7s cubic-bezier(.2,.8,.2,1); transform-style:preserve-3d}
-    .card:hover .card-inner, .card:focus-within .card-inner, .card.flipped .card-inner{transform:rotateY(180deg)}
-    .face{position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; padding:24px; border-radius:var(--card-radius); backface-visibility:hidden;
-      border:1px solid rgba(255,255,255,.08); box-shadow:var(--shadow); overflow:hidden}
-    .face.front{background:linear-gradient(180deg, rgba(18,26,44,.45), rgba(11,18,32,.6)); backdrop-filter:blur(12px)}
-    .face.back{background:linear-gradient(180deg, rgba(18,26,44,.82), rgba(11,18,32,.92)); transform:rotateY(180deg)}
-    .badge{position:absolute; top:12px; right:12px; font-size:.72rem; letter-spacing:.08em; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.1); background:rgba(255,255,255,.05)}
-    .badge.new{color:#082016; background:linear-gradient(90deg,#b0ffcb,#6ee7ff); border-color:transparent; font-weight:800}
-    .badge.soon{color:var(--muted)}
-    .title{font-size:clamp(26px, 2.6vw, 32px); font-weight:800; letter-spacing:.03em}
-    .word{font-size:clamp(34px, 4vw, 44px); font-weight:800; letter-spacing:.08em; text-transform:uppercase}
-    .desc{color:var(--muted); max-width:36ch; margin-top:8px}
-    .actions{margin-top:16px; display:flex; gap:10px}
-
-    .chip{position:absolute; inset:auto -45px -45px auto; width:140px; height:140px; filter:blur(24px); opacity:.45}
-    .chip.prep{background:radial-gradient(closest-corner, #6ee7ff, transparent 70%)}
-    .chip.nav{background:radial-gradient(closest-corner, #ffb86b, transparent 70%)}
-    .chip.imm{background:radial-gradient(closest-corner, #9ae6b4, transparent 70%)}
-    .chip.acc{background:radial-gradient(closest-corner, #c792ea, transparent 70%)}
-    .chip.os{background:radial-gradient(closest-corner, #f472b6, transparent 70%)}
-
-    /* Footer */
-    footer{max-width:1200px; margin:0 auto 60px; padding:0 20px; color:var(--muted)}
-    .footgrid{display:grid; grid-template-columns:1fr 1fr; gap:24px}
-    @media (max-width:760px){.footgrid{grid-template-columns:1fr}}
-
-    /* Modal */
-    dialog{border:none; border-radius:18px; padding:0; background:linear-gradient(180deg, rgba(18,26,44,.92), rgba(10,14,24,.94)); color:var(--text); width:min(520px,92vw); box-shadow:var(--shadow);}
-    .modal-head{padding:22px 22px 10px; border-bottom:1px solid rgba(255,255,255,.08)}
-    .modal-body{padding:18px 22px 24px}
-    .modal-actions{display:flex; gap:12px; padding:0 22px 22px}
-    input[type=email]{width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.04); color:var(--text)}
-
-    /* Small helper label groups above cards */
-    .group-label{margin:12px 6px -6px; color:var(--muted); font-size:.82rem; letter-spacing:.12em; text-transform:uppercase}
-
-    /* Accessibility helpers */
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-
-  </style>
+        /* Fade-in animation for roadmap */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
-<body>
-  <div class="halo" aria-hidden="true"></div>
-  <header>
-    <nav class="nav" aria-label="Primary">
-      <div class="brand"><span class="glyph" aria-hidden="true"></span><span>Enter Paradigm</span></div>
-      <div class="links">
-        <a href="#cards">Pathways</a>
-        <a href="#about">About</a>
-        <a href="#waitlist" id="waitlistLink">Dispatch</a>
-      </div>
-    </nav>
-  </header>
+<body class="bg-sovereign-black">
 
-  <main>
-    <section class="hero" id="home">
-      <div class="panel">
-        <div class="kicker">Operating System for Human Potential</div>
-        <h1>Enter the Paradigm</h1>
-        <p class="sub">Five pathways. One philosophy. Begin with <strong>Prep</strong> to install disciplines. Orient with <strong>Navigate</strong>. Embody through <strong>Immerse</strong>. Build speed in <strong>Accelerate</strong>. Integrate it all with <strong>Operate</strong>.</p>
-        <div class="cta-row">
-          <a class="btn primary" href="/prep"><span class="dot"></span> Start with Prep</a>
-          <a class="btn ghost" href="/navigate">Watch Navigate</a>
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-opacity-50 backdrop-blur-md border-b border-gray-800/50">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 py-4 flex justify-between items-center">
+            <a href="#home" class="text-xl font-bold tracking-wider">ENTER<span style="color: var(--sovereign-gold);">PARADIGM</span></a>
+            <nav class="hidden md:flex space-x-8 text-sm font-semibold text-gray-300">
+                <a href="#pillars" class="hover:text-white transition-colors">Pillars</a>
+                <a href="#navigate-preview" class="hover:text-white transition-colors">Navigate</a>
+                <a href="#testimonials" class="hover:text-white transition-colors">Testimonials</a>
+                <a href="#roadmap" class="hover:text-white transition-colors">Roadmap</a>
+            </nav>
+            <a href="#prep" class="btn btn-gradient text-sm hidden sm:inline-flex">Start with Prep</a>
         </div>
-      </div>
-      <div class="panel" id="about">
-        <h3 style="margin-top:4px; margin-bottom:8px">The Map</h3>
-        <p class="sub" style="margin-top:0">This is a unified ecosystem: education, media, retreats, and software designed to restore sovereignty. The result is not a product; it’s a new way of operating.</p>
-        <ul style="margin:14px 0 0; padding-left:18px; color:var(--muted)">
-          <li><strong>Available Now:</strong> Prep & Navigate</li>
-          <li><strong>On the Horizon:</strong> Immerse (retreats), Accelerator (operator sprints), Operate (OS)</li>
-        </ul>
-      </div>
-    </section>
+    </header>
 
-    <section class="grid-wrap" id="cards" aria-labelledby="paths">
-      <div class="grid-head">
-        <h2 id="paths" style="margin:0">Choose your pathway</h2>
-        <small>Hover / tap a card to learn more</small>
-      </div>
-
-      <div class="group-label">Available now</div>
-      <div class="grid" style="margin-bottom:14px">
-        <!-- PREP (Active) -->
-        <article class="card" data-state="active">
-          <div class="card-inner">
-            <div class="face front">
-              <span class="badge new" aria-label="New">NEW</span>
-              <div class="word">Prep</div>
-              <p class="desc">Install disciplines that compound. Systems for focus, execution, and leverage.</p>
-              <div class="chip prep" aria-hidden="true"></div>
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden animated-grid-bg">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-sovereign-black"></div>
+            <div class="relative z-10 text-center max-w-3xl mx-auto px-5">
+                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-paradigm-white mb-6">
+                    Enter Paradigm
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 font-semibold max-w-xl mx-auto mb-10">
+                    An Operating System for Human Potential.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#prep" class="btn btn-gradient w-full sm:w-auto">Start with Prep</a>
+                    <a href="#navigate-preview" class="btn btn-outline w-full sm:w-auto">Watch Navigate</a>
+                </div>
             </div>
-            <div class="face back">
-              <div class="title">Paradigm Prep</div>
-              <p class="desc">The institute for building foundational systems. Curriculum, templates, and practice that make sovereignty a habit.</p>
-              <div class="actions">
-                <a class="btn primary" href="/prep">Start here</a>
-                <a class="btn ghost" href="/prep/syllabus">View syllabus</a>
-              </div>
+        </section>
+
+        <!-- Five Pillar Launcher Section -->
+        <section id="pillars" class="py-24">
+            <div class="max-w-7xl mx-auto px-5 sm:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+                    <!-- Card 1: Prep -->
+                    <div class="glass-card p-8 flex flex-col items-start text-left">
+                        <div class="relative mb-4">
+                            <span class="absolute top-0 right-0 -mt-2 -mr-2 px-2 py-1 text-xs font-bold text-black bg-green-400 rounded-full">LIVE</span>
+                            <i data-lucide="clipboard-check" class="w-10 h-10 text-paradigm-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Prep</h3>
+                        <p class="text-gray-400 text-sm mb-4 flex-grow">Install disciplines that compound. Curriculum, templates, and practice that make sovereignty a habit.</p>
+                        <a href="#prep" class="font-semibold text-cerulean-start hover:underline">Start here →</a>
+                    </div>
+                    <!-- Card 2: Navigate -->
+                    <div class="glass-card p-8 flex flex-col items-start text-left">
+                        <div class="relative mb-4">
+                            <span class="absolute top-0 right-0 -mt-2 -mr-2 px-2 py-1 text-xs font-bold text-black bg-green-400 rounded-full">LIVE</span>
+                            <i data-lucide="map" class="w-10 h-10 text-paradigm-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Navigate</h3>
+                        <p class="text-gray-400 text-sm mb-4 flex-grow">Flagship documentaries and maps of the frontier. Orient your path.</p>
+                        <a href="#navigate-preview" class="font-semibold text-cerulean-start hover:underline">Watch →</a>
+                    </div>
+                    <!-- Card 3: Immerse -->
+                    <div class="glass-card p-8 flex flex-col items-start text-left">
+                        <div class="relative mb-4">
+                            <span class="absolute top-0 right-0 -mt-2 -mr-2 px-2 py-1 text-xs font-bold text-black bg-yellow-400 rounded-full">COMING SOON</span>
+                            <i data-lucide="users" class="w-10 h-10 text-paradigm-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Immerse</h3>
+                        <p class="text-gray-400 text-sm mb-4 flex-grow">Live the new paradigm. Retreats & gatherings.</p>
+                        <a href="#immerse" class="font-semibold text-cerulean-start hover:underline">Join waitlist →</a>
+                    </div>
+                    <!-- Card 4: Accelerate -->
+                    <div class="glass-card p-8 flex flex-col items-start text-left">
+                        <div class="relative mb-4">
+                            <span class="absolute top-0 right-0 -mt-2 -mr-2 px-2 py-1 text-xs font-bold text-black bg-yellow-400 rounded-full">COMING SOON</span>
+                            <i data-lucide="rocket" class="w-10 h-10 text-paradigm-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Accelerate</h3>
+                        <p class="text-gray-400 text-sm mb-4 flex-grow">Operator sprints. Turn ambition into throughput.</p>
+                        <a href="#accelerate" class="font-semibold text-cerulean-start hover:underline">Get notified →</a>
+                    </div>
+                    <!-- Card 5: Operate -->
+                    <div class="glass-card p-8 flex flex-col items-start text-left">
+                        <div class="relative mb-4">
+                            <span class="absolute top-0 right-0 -mt-2 -mr-2 px-2 py-1 text-xs font-bold text-black bg-blue-400 rounded-full">DEVLOG</span>
+                            <i data-lucide="cpu" class="w-10 h-10 text-paradigm-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Operate</h3>
+                        <p class="text-gray-400 text-sm mb-4 flex-grow">Paradigm OS — integrate everything you’ve built. Private, local-first, sovereign.</p>
+                        <a href="#operate" class="font-semibold text-cerulean-start hover:underline">Follow devlog →</a>
+                    </div>
+                </div>
             </div>
-          </div>
-        </article>
+        </section>
 
-        <!-- NAVIGATE (Active) -->
-        <article class="card" data-state="active">
-          <div class="card-inner">
-            <div class="face front">
-              <span class="badge new" aria-label="New">NEW</span>
-              <div class="word">Navigate</div>
-              <p class="desc">Flagship documentaries and maps of the frontier. Orient your path.</p>
-              <div class="chip nav" aria-hidden="true"></div>
+        <!-- Navigate Preview Section -->
+        <section id="navigate-preview" class="py-16">
+            <div class="max-w-7xl mx-auto px-5 sm:px-8 text-center">
+                <h2 class="text-4xl font-bold mb-4">Flagship Documentaries & Maps of the Frontier</h2>
+                <p class="text-lg text-gray-400 mb-12 max-w-2xl mx-auto">Orient your path with deep dives into the concepts and characters shaping our future.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Video Card -->
+                    <div class="group cursor-pointer">
+                        <div class="aspect-video rounded-2xl bg-gradient-to-br from-cerulean-start to-cerulean-end flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-105">
+                           <p class="text-2xl font-bold">THE SOVEREIGN STACK</p>
+                        </div>
+                        <h4 class="text-xl font-semibold">The Sovereign Stack</h4>
+                        <p class="text-gray-400 text-sm">Episode 01: The Tools of Freedom</p>
+                        <span class="text-xs font-bold text-green-400">LIVE</span>
+                    </div>
+                     <!-- Video Card -->
+                    <div class="group cursor-pointer">
+                        <div class="aspect-video rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-105">
+                           <p class="text-2xl font-bold">PROTOCOL CITIES</p>
+                        </div>
+                        <h4 class="text-xl font-semibold">Protocol Cities</h4>
+                        <p class="text-gray-400 text-sm">Episode 02: Building the New World</p>
+                        <span class="text-xs font-bold text-green-400">LIVE</span>
+                    </div>
+                     <!-- Video Card -->
+                    <div class="group cursor-pointer">
+                        <div class="aspect-video rounded-2xl bg-gradient-to-br from-yellow-500 to-orange-500 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-105">
+                           <p class="text-2xl font-bold">AI & AGENCY</p>
+                        </div>
+                        <h4 class="text-xl font-semibold">AI & Agency</h4>
+                        <p class="text-gray-400 text-sm">Episode 03: The Augmentation Thesis</p>
+                        <span class="text-xs font-bold text-yellow-400">PREMIERES Q4</span>
+                    </div>
+                    <!-- Add 3 more placeholder cards -->
+                    <div class="group cursor-pointer"><div class="aspect-video rounded-2xl bg-gray-800 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-105"><p class="text-xl font-bold text-gray-500">COMING SOON</p></div><h4 class="text-xl font-semibold text-gray-600">Untitled Project</h4><p class="text-gray-500 text-sm">Episode 04</p></div>
+                    <div class="group cursor-pointer"><div class="aspect-video rounded-2xl bg-gray-800 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-105"><p class="text-xl font-bold text-gray-500">COMING SOON</p></div><h4 class="text-xl font-semibold text-gray-600">Untitled Project</h4><p class="text-gray-500 text-sm">Episode 05</p></div>
+                    <div class="group cursor-pointer"><div class="aspect-video rounded-2xl bg-gray-800 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-105"><p class="text-xl font-bold text-gray-500">COMING SOON</p></div><h4 class="text-xl font-semibold text-gray-600">Untitled Project</h4><p class="text-gray-500 text-sm">Episode 06</p></div>
+                </div>
             </div>
-            <div class="face back">
-              <div class="title">Paradigm Navigate</div>
-              <p class="desc">The Next Atlas distilled: visionary stories, research drops, and philosophical breakdowns that set direction.</p>
-              <div class="actions">
-                <a class="btn primary" href="/navigate">Watch now</a>
-                <a class="btn ghost" href="https://youtube.com/@enterparadigm" target="_blank" rel="noreferrer">YouTube</a>
-              </div>
+        </section>
+
+        <!-- Testimonials Strip -->
+        <section id="testimonials" class="py-24 bg-background-neutral border-t border-b border-sovereign-gold/20">
+            <div class="max-w-7xl mx-auto px-5 sm:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Testimonial Card -->
+                    <div class="glass-card p-8">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-cerulean-end flex items-center justify-center font-bold text-xl mr-4">A.</div>
+                            <div>
+                                <p class="font-bold">A., Solo Founder</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-300">"Prep forced me to systemize my day. My shipping throughput doubled."</p>
+                    </div>
+                    <!-- Testimonial Card -->
+                    <div class="glass-card p-8">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-cerulean-end flex items-center justify-center font-bold text-xl mr-4">M.</div>
+                            <div>
+                                <p class="font-bold">M., Designer</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-300">"The Navigate series changed how I think about off-grid living and local-first tech."</p>
+                    </div>
+                    <!-- Testimonial Card -->
+                    <div class="glass-card p-8">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-cerulean-end flex items-center justify-center font-bold text-xl mr-4">R.</div>
+                            <div>
+                                <p class="font-bold">R., Film Ops</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-300">"Accelerator gave me true throughput. It's intense, focused, and has zero fluff."</p>
+                    </div>
+                </div>
             </div>
-          </div>
-        </article>
+        </section>
 
-        <!-- IMMERSE (Tease) -->
-        <article class="card" data-state="soon">
-          <div class="card-inner">
-            <div class="face front" aria-describedby="imm-desc">
-              <span class="badge soon">COMING SOON</span>
-              <div class="word">Immerse</div>
-              <p id="imm-desc" class="desc">Live the new paradigm through retreats, gatherings, and transformative environments.</p>
-              <div class="chip imm" aria-hidden="true"></div>
+        <!-- Roadmap Bar -->
+        <section id="roadmap" class="sticky top-[70px] z-40 bg-sovereign-black/80 backdrop-blur-lg py-4 border-b border-gray-800/50 fade-in-section">
+            <div class="max-w-7xl mx-auto px-5 sm:px-8">
+                <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-4 md:gap-8">
+                    <h3 class="text-sm font-bold uppercase tracking-widest text-sovereign-gold">Roadmap</h3>
+                    <div class="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 text-sm text-gray-400">
+                        <p><span class="font-semibold text-white">Q3:</span> Prep v1 • Navigate Pilot</p>
+                        <p><span class="font-semibold text-white">Q4:</span> Immerse Waitlist • Accelerator Cohort 01</p>
+                        <p><span class="font-semibold text-white">Q1 '25:</span> OS Devlog Begins</p>
+                    </div>
+                </div>
             </div>
-            <div class="face back">
-              <div class="title">Paradigm Immerse</div>
-              <p class="desc">The Citadel and other formats. High-agency training in sovereign environments.</p>
-              <div class="actions">
-                <button class="btn primary" data-open="waitlist" data-tag="immerse">Join waitlist</button>
-                <a class="btn ghost" href="/immerse">Learn more</a>
-              </div>
+        </section>
+
+        <!-- Placeholder Sections for Subpages -->
+        <div class="space-y-24 py-24">
+            <section id="prep" class="max-w-4xl mx-auto px-5 sm:px-8 text-center">
+                <h2 class="text-4xl font-bold mb-4">Install disciplines that compound.</h2>
+                <p class="text-lg text-gray-400 mb-12">Prep is a guided installation of the core systems required for sovereign operation.</p>
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-4 text-left mb-12">
+                     <div class="glass-card p-4 rounded-xl"><h4 class="font-bold">Systems</h4><p class="text-xs text-gray-400">Daily, weekly, monthly.</p></div>
+                     <div class="glass-card p-4 rounded-xl"><h4 class="font-bold">Attention</h4><p class="text-xs text-gray-400">Focus & flow.</p></div>
+                     <div class="glass-card p-4 rounded-xl"><h4 class="font-bold">Templates</h4><p class="text-xs text-gray-400">Repeatable excellence.</p></div>
+                     <div class="glass-card p-4 rounded-xl"><h4 class="font-bold">Feedback Loop</h4><p class="text-xs text-gray-400">Review & iterate.</p></div>
+                     <div class="glass-card p-4 rounded-xl"><h4 class="font-bold">Scoreboard</h4><p class="text-xs text-gray-400">Measure what matters.</p></div>
+                </div>
+                <a href="#footer" class="btn btn-gradient">Enroll Now</a>
+            </section>
+
+            <section id="immerse" class="max-w-4xl mx-auto px-5 sm:px-8 text-center">
+                <h2 class="text-4xl font-bold mb-4">Live the new paradigm.</h2>
+                <p class="text-lg text-gray-400 mb-12">Immerse is a series of in-person retreats and gatherings for operators to train, build, and connect.</p>
+                <div class="glass-card p-8 md:p-12 text-left mb-12">
+                    <h3 class="text-3xl font-bold mb-2">The Citadel</h3>
+                    <p class="text-gray-300 mb-6">A 7-day deep dive into physical sovereignty, local-first tech, and network building. Limited to 24 operators.</p>
+                    <a href="#footer" class="btn btn-gradient">Join Waitlist</a>
+                </div>
+            </section>
+            
+            <section id="accelerate" class="max-w-4xl mx-auto px-5 sm:px-8 text-center">
+                <h2 class="text-4xl font-bold mb-4">Turn ambition into throughput.</h2>
+                <p class="text-lg text-gray-400 mb-12">A 6-week, high-intensity sprint for operators focused on shipping a specific, measurable outcome.</p>
+                <div class="flex flex-col md:flex-row justify-between items-center gap-8 text-left mb-12">
+                    <div class="text-center"><p class="text-2xl font-bold">Weeks 1-2</p><p class="text-gray-400">System Setup</p></div>
+                    <div class="text-2xl text-gray-600">→</div>
+                    <div class="text-center"><p class="text-2xl font-bold">Weeks 3-4</p><p class="text-gray-400">Execution Sprints</p></div>
+                    <div class="text-2xl text-gray-600">→</div>
+                    <div class="text-center"><p class="text-2xl font-bold">Weeks 5-6</p><p class="text-gray-400">Review & Scale</p></div>
+                </div>
+                 <a href="#footer" class="btn btn-gradient">Get Notified for Cohort 01</a>
+            </section>
+
+            <section id="operate" class="max-w-4xl mx-auto px-5 sm:px-8 text-center">
+                <h2 class="text-4xl font-bold mb-4">Paradigm OS</h2>
+                <p class="text-lg text-gray-400 mb-12">Integrate everything you’ve built.</p>
+                <div class="glass-card p-8 text-left mb-8">
+                    <h3 class="text-2xl font-bold mb-4">Philosophy</h3>
+                    <p class="text-gray-300">A local-first, privacy-by-default OS for sovereign living. We’re building the bridge between your tools, your data, and your sovereignty. No clouds, no subscriptions, no compromises.</p>
+                </div>
+                 <a href="#footer" class="btn btn-gradient">Follow Devlog</a>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-background-neutral border-t border-gray-800/50 py-16">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <!-- Column 1: Logo & Ethos -->
+                <div class="md:col-span-2">
+                    <h3 class="text-xl font-bold tracking-wider mb-4">ENTER<span style="color: var(--sovereign-gold);">PARADIGM</span></h3>
+                    <p class="text-gray-400 max-w-sm">An operating system for human potential, designed for sovereign individuals who build the future.</p>
+                </div>
+                <!-- Column 2: Quick Links -->
+                <div>
+                    <h4 class="font-semibold mb-4">Pillars</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#prep" class="hover:text-white transition-colors">Prep</a></li>
+                        <li><a href="#navigate-preview" class="hover:text-white transition-colors">Navigate</a></li>
+                        <li><a href="#immerse" class="hover:text-white transition-colors">Immerse</a></li>
+                        <li><a href="#accelerate" class="hover:text-white transition-colors">Accelerate</a></li>
+                        <li><a href="#operate" class="hover:text-white transition-colors">Operate</a></li>
+                    </ul>
+                </div>
+                <!-- Column 3: Dispatch Signup -->
+                <div>
+                    <h4 class="font-semibold mb-4">Dispatch Signup</h4>
+                    <p class="text-sm text-gray-400 mb-4">Get updates, devlogs, and new releases.</p>
+                    <form action="#" method="POST">
+                        <div class="flex flex-col space-y-2">
+                            <input type="email" placeholder="your@email.com" class="bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 focus:ring-2 focus:ring-cerulean-start focus:outline-none transition-shadow">
+                            <button type="submit" class="btn btn-gradient text-sm">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-          </div>
-        </article>
-
-        <!-- ACCELERATE (Tease) -->
-        <article class="card" data-state="soon">
-          <div class="card-inner">
-            <div class="face front">
-              <span class="badge soon">COMING SOON</span>
-              <div class="word">Accelerate</div>
-              <p class="desc">Operator sprints that turn ambition into throughput.</p>
-              <div class="chip acc" aria-hidden="true"></div>
+            <div class="mt-12 pt-8 border-t border-gray-800/50 text-center text-xs text-gray-500">
+                <p>EnterParadigm v0.1 — “Forge”</p>
             </div>
-            <div class="face back">
-              <div class="title">Paradigm Accelerator</div>
-              <p class="desc">Cohorts, dashboards, and accountability cadences to ship at velocity.</p>
-              <div class="actions">
-                <button class="btn primary" data-open="waitlist" data-tag="accelerator">Get notified</button>
-                <a class="btn ghost" href="/accelerator">Overview</a>
-              </div>
-            </div>
-          </div>
-        </article>
+        </div>
+    </footer>
 
-        <!-- OPERATE (Tease) -->
-        <article class="card" data-state="soon">
-          <div class="card-inner">
-            <div class="face front">
-              <span class="badge soon">DEVLOG</span>
-              <div class="word">Operate</div>
-              <p class="desc">Paradigm OS — integrate everything you’ve built. Private, local-first, sovereign.</p>
-              <div class="chip os" aria-hidden="true"></div>
-            </div>
-            <div class="face back">
-              <div class="title">Paradigm OS</div>
-              <p class="desc">Knowledge capture, protocols, and orchestration. The integration layer of the ecosystem.</p>
-              <div class="actions">
-                <a class="btn primary" href="/operate/devlog">Follow devlog</a>
-                <button class="btn ghost" data-open="waitlist" data-tag="os">Notify me</button>
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
 
-    </section>
-  </main>
+        // Intersection Observer for fade-in animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
 
-  <footer>
-    <div class="footgrid">
-      <div>
-        <div class="brand" style="margin-bottom:8px"><span class="glyph" aria-hidden="true"></span><strong>Enter Paradigm</strong></div>
-        <p class="sub" style="margin-top:0">A unified ecosystem for sovereign living. © <span id="year"></span></p>
-      </div>
-      <div style="display:flex; gap:14px; justify-content:flex-end; align-items:center; flex-wrap:wrap">
-        <a class="btn ghost" href="https://youtube.com/@enterparadigm" target="_blank" rel="noreferrer">YouTube</a>
-        <a class="btn ghost" href="https://instagram.com/enter.paradigm" target="_blank" rel="noreferrer">Instagram</a>
-        <a class="btn ghost" href="#waitlist" id="waitlistLink2">Join Dispatch</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Waitlist Modal -->
-  <dialog id="waitlist">
-    <form method="dialog">
-      <div class="modal-head">
-        <h3 style="margin:0">Join the waitlist</h3>
-        <p class="sub" style="margin:.35rem 0 1rem">Get updates for Immerse, Accelerator, and OS.</p>
-      </div>
-      <div class="modal-body">
-        <label class="sr-only" for="email">Email</label>
-        <input id="email" type="email" placeholder="you@domain.com" required />
-        <input type="hidden" id="tag" value="general" />
-      </div>
-      <div class="modal-actions">
-        <button class="btn ghost" value="cancel">Cancel</button>
-        <button class="btn primary" value="submit">Notify me</button>
-      </div>
-    </form>
-  </dialog>
-
-  <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Mobile tap to flip
-    document.querySelectorAll('.card').forEach((card)=>{
-      card.addEventListener('click', (e)=>{
-        // Allow button links to function without toggling
-        const isInteractive = e.target.closest('a,button,input,label');
-        if(isInteractive) return;
-        card.classList.toggle('flipped');
-      });
-    });
-
-    // Modal openers
-    const dlg = document.getElementById('waitlist');
-    document.querySelectorAll('[data-open="waitlist"]').forEach(btn=>{
-      btn.addEventListener('click', (e)=>{
-        const t = e.currentTarget.getAttribute('data-tag')||'general';
-        document.getElementById('tag').value = t;
-        dlg.showModal();
-      })
-    })
-    document.getElementById('waitlistLink')?.addEventListener('click', (e)=>{e.preventDefault(); dlg.showModal()})
-    document.getElementById('waitlistLink2')?.addEventListener('click', (e)=>{e.preventDefault(); dlg.showModal()})
-
-    // Fake submit handler (replace with real endpoint)
-    document.querySelector('dialog form')?.addEventListener('submit', (e)=>{
-      e.preventDefault();
-      const email = document.getElementById('email').value.trim();
-      const tag = document.getElementById('tag').value;
-      if(!email) return;
-      dlg.close();
-      alert(`Added to waitlist: ${email}\nSegment: ${tag}`);
-    });
-  </script>
+        const sections = document.querySelectorAll('.fade-in-section');
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>
