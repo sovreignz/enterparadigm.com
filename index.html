@@ -1,408 +1,387 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enter Paradigm | An Operating System for Human Potential</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>*Paradigm — Enter the Paradigm</title>
+  <meta name="description" content="*Paradigm is a sovereign operating system for life, commerce, and culture. Enter to learn, build, and route into Prep, OS, Alpha, Living, and Impact." />
+  <meta name="robots" content="index,follow" />
 
-    <style>
-        /* Global Design System & Custom Styles */
-        :root {
-            --sovereign-black: #0A0A0A;
-            --paradigm-white: #F9F9F9;
-            --cerulean-start: #00AEEF;
-            --cerulean-end: #005F99;
-            --sovereign-gold: #D4AF37;
-            --background-neutral: #1A1A1A;
-            --glass-bg: rgba(21, 21, 21, 0.65);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --shadow-color: rgba(0, 0, 0, 0.35);
-        }
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="*Paradigm — Enter the Paradigm" />
+  <meta property="og:description" content="A sovereign operating system for life, commerce, and culture." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://enterparadigm.com/" />
+  <meta property="og:image" content="https://enterparadigm.com/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="*Paradigm — Enter the Paradigm" />
+  <meta name="twitter:description" content="A sovereign operating system for life, commerce, and culture." />
+  <meta name="twitter:image" content="https://enterparadigm.com/og-image.jpg" />
 
-        body {
-            font-family: 'Inter', system-ui, sans-serif;
-            background-color: var(--sovereign-black);
-            color: var(--paradigm-white);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
+  <!-- Favicon (swap with your assets) -->
+  <link rel="icon" href="/favicon.ico" />
 
-        /* Animated Grid Background for Hero */
-        .animated-grid-bg {
-            background-color: var(--sovereign-black);
-            background-image:
-                linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px);
-            background-size: 40px 40px;
-            animation: moveGrid 20s linear infinite;
-        }
+  <!-- Font: Satoshi (Fontshare) -->
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
 
-        @keyframes moveGrid {
-            from { background-position: 0 0; }
-            to { background-position: 40px 40px; }
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Satoshi', 'ui-sans-serif', 'system-ui', 'Apple Color Emoji', 'Segoe UI Emoji'],
+          },
+          colors: {
+            ink: '#0A0A0A',
+            paper: '#FFFFFF'
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(0,0,0,0.12)'
+          },
+          borderRadius: {
+            '2xl': '1rem'
+          }
         }
-        
-        /* Glassmorphism Card Style */
-        .glass-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px; /* 2xl */
-            box-shadow: 0 8px 24px var(--shadow-color);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
+      },
+      corePlugins: {
+        preflight: true
+      }
+    }
+  </script>
 
-        .glass-card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 0 20px 2px var(--cerulean-start), 0 8px 32px var(--shadow-color);
-            border-color: rgba(0, 174, 239, 0.5);
-        }
+  <style>
+    /* Subtle film grain */
+    .grain:before {
+      content: "";
+      position: fixed;
+      inset: -50%;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' opacity='0.07' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 320px 320px;
+      animation: moveGrain 20s linear infinite;
+      z-index: 0;
+    }
+    @keyframes moveGrain { from { transform: translate3d(0,0,0)} to { transform: translate3d(-10%, -10%, 0)} }
 
-        /* Button Styles */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 24px;
-            border-radius: 9999px;
-            font-weight: 600;
-            transition: all 0.2s ease-in-out;
-            cursor: pointer;
-        }
-        .btn-gradient {
-            background-image: linear-gradient(135deg, var(--cerulean-start), var(--cerulean-end));
-            color: var(--paradigm-white);
-        }
-        .btn-gradient:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0, 174, 239, 0.4);
-        }
-        .btn-outline {
-            border: 2px solid var(--glass-border);
-            color: var(--paradigm-white);
-        }
-        .btn-outline:hover {
-            background-color: var(--glass-border);
-            border-color: var(--paradigm-white);
-        }
+    /* Fade / rise reveal */
+    .reveal { opacity: 0; transform: translateY(12px); transition: all .6s ease; }
+    .reveal.show { opacity: 1; transform: translateY(0); }
 
-        /* Fade-in animation for roadmap */
-        .fade-in-section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .fade-in-section.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+    /* Focus ring */
+    .ring-focus:focus { outline: none; box-shadow: 0 0 0 3px rgba(255,255,255,.2), 0 0 0 6px rgba(0,0,0,.6); }
+
+    /* Asterisk mark */
+    .asterisk {
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+  </style>
 </head>
-<body class="bg-sovereign-black">
 
-    <!-- Header -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-opacity-50 backdrop-blur-md border-b border-gray-800/50">
-        <div class="max-w-7xl mx-auto px-5 sm:px-8 py-4 flex justify-between items-center">
-            <a href="#home" class="text-xl font-bold tracking-wider">ENTER<span style="color: var(--sovereign-gold);">PARADIGM</span></a>
-            <nav class="hidden md:flex space-x-8 text-sm font-semibold text-gray-300">
-                <a href="#pillars" class="hover:text-white transition-colors">Pillars</a>
-                <a href="#navigate-preview" class="hover:text-white transition-colors">Navigate</a>
-                <a href="#testimonials" class="hover:text-white transition-colors">Testimonials</a>
-                <a href="#roadmap" class="hover:text-white transition-colors">Roadmap</a>
-            </nav>
-            <a href="#prep" class="btn btn-gradient text-sm hidden sm:inline-flex">Start with Prep</a>
+<body class="bg-ink text-paper font-sans antialiased grain">
+  <!-- Sticky Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 backdrop-blur">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3 group" aria-label="Enter Paradigm">
+        <!-- ✶ glyph -->
+        <div class="h-7 w-7 rounded-2xl bg-white text-black grid place-items-center shadow-soft transition-transform group-hover:scale-95">
+          <span class="text-lg leading-none asterisk">✶</span>
         </div>
-    </header>
+        <span class="text-sm tracking-wide uppercase text-white/80 group-hover:text-white transition-colors">*</span><span class="text-sm tracking-wide uppercase text-white">Paradigm</span>
+      </a>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden animated-grid-bg">
-            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-sovereign-black"></div>
-            <div class="relative z-10 text-center max-w-3xl mx-auto px-5">
-                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-paradigm-white mb-6">
-                    Enter Paradigm
-                </h1>
-                <p class="text-xl md:text-2xl text-gray-300 font-semibold max-w-xl mx-auto mb-10">
-                    An Operating System for Human Potential.
-                </p>
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="#prep" class="btn btn-gradient w-full sm:w-auto">Start with Prep</a>
-                    <a href="#navigate-preview" class="btn btn-outline w-full sm:w-auto">Watch Navigate</a>
-                </div>
-            </div>
-        </section>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#architecture" class="text-white/70 hover:text-white transition">Architecture</a>
+        <a href="#myth" class="text-white/70 hover:text-white transition">Myth</a>
+        <a href="#join" class="text-white/70 hover:text-white transition">Enter</a>
+      </nav>
 
-        <!-- Five Pillar Launcher Section -->
-        <section id="pillars" class="py-24">
-            <div class="max-w-7xl mx-auto px-5 sm:px-8">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-                    <!-- Card 1: Prep -->
-                    <div class="glass-card p-8 flex flex-col items-start text-left">
-                        <div class="relative mb-4">
-                            <span class="absolute top-0 right-0 -mt-2 -mr-2 px-2 py-1 text-xs font-bold text-black bg-green-400 rounded-full">LIVE</span>
-                            <i data-lucide="clipboard-check" class="w-10 h-10 text-paradigm-white"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-2">Prep</h3>
-                        <p class="text-gray-400 text-sm mb-4 flex-grow">Install disciplines that compound. Curriculum, templates, and practice that make sovereignty a habit.</p>
-                        <a href="#prep" class="font-semibold text-cerulean-start hover:underline">Start here →</a>
-                    </div>
-                    <!-- Card 2: Navigate -->
-                    <div class="glass-card p-8 flex flex-col items-start text-left">
-                        <div class="relative mb-4">
-                            <span class="absolute top-0 right-0 -mt-2 -mr-2 px-2 py-1 text-xs font-bold text-black bg-green-400 rounded-full">LIVE</span>
-                            <i data-lucide="map" class="w-10 h-10 text-paradigm-white"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-2">Navigate</h3>
-                        <p class="text-gray-400 text-sm mb-4 flex-grow">Flagship documentaries and maps of the frontier. Orient your path.</p>
-                        <a href="#navigate-preview" class="font-semibold text-cerulean-start hover:underline">Watch →</a>
-                    </div>
-                    <!-- Card 3: Immerse -->
-                    <div class="glass-card p-8 flex flex-col items-start text-left">
-                        <div class="relative mb-4">
-                            <span class="absolute top-0 right-0 -mt-2 -mr-2 px-2 py-1 text-xs font-bold text-black bg-yellow-400 rounded-full">COMING SOON</span>
-                            <i data-lucide="users" class="w-10 h-10 text-paradigm-white"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-2">Immerse</h3>
-                        <p class="text-gray-400 text-sm mb-4 flex-grow">Live the new paradigm. Retreats & gatherings.</p>
-                        <a href="#immerse" class="font-semibold text-cerulean-start hover:underline">Join waitlist →</a>
-                    </div>
-                    <!-- Card 4: Accelerate -->
-                    <div class="glass-card p-8 flex flex-col items-start text-left">
-                        <div class="relative mb-4">
-                            <span class="absolute top-0 right-0 -mt-2 -mr-2 px-2 py-1 text-xs font-bold text-black bg-yellow-400 rounded-full">COMING SOON</span>
-                            <i data-lucide="rocket" class="w-10 h-10 text-paradigm-white"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-2">Accelerate</h3>
-                        <p class="text-gray-400 text-sm mb-4 flex-grow">Operator sprints. Turn ambition into throughput.</p>
-                        <a href="#accelerate" class="font-semibold text-cerulean-start hover:underline">Get notified →</a>
-                    </div>
-                    <!-- Card 5: Operate -->
-                    <div class="glass-card p-8 flex flex-col items-start text-left">
-                        <div class="relative mb-4">
-                            <span class="absolute top-0 right-0 -mt-2 -mr-2 px-2 py-1 text-xs font-bold text-black bg-blue-400 rounded-full">DEVLOG</span>
-                            <i data-lucide="cpu" class="w-10 h-10 text-paradigm-white"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-2">Operate</h3>
-                        <p class="text-gray-400 text-sm mb-4 flex-grow">Paradigm OS — integrate everything you’ve built. Private, local-first, sovereign.</p>
-                        <a href="#operate" class="font-semibold text-cerulean-start hover:underline">Follow devlog →</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <a href="#join" class="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-sm hover:bg-white hover:text-black transition">
+        Enter
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="-mr-0.5">
+          <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </header>
 
-        <!-- Navigate Preview Section -->
-        <section id="navigate-preview" class="py-16">
-            <div class="max-w-7xl mx-auto px-5 sm:px-8 text-center">
-                <h2 class="text-4xl font-bold mb-4">Flagship Documentaries & Maps of the Frontier</h2>
-                <p class="text-lg text-gray-400 mb-12 max-w-2xl mx-auto">Orient your path with deep dives into the concepts and characters shaping our future.</p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Video Card -->
-                    <div class="group cursor-pointer">
-                        <div class="aspect-video rounded-2xl bg-gradient-to-br from-cerulean-start to-cerulean-end flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-105">
-                           <p class="text-2xl font-bold">THE SOVEREIGN STACK</p>
-                        </div>
-                        <h4 class="text-xl font-semibold">The Sovereign Stack</h4>
-                        <p class="text-gray-400 text-sm">Episode 01: The Tools of Freedom</p>
-                        <span class="text-xs font-bold text-green-400">LIVE</span>
-                    </div>
-                     <!-- Video Card -->
-                    <div class="group cursor-pointer">
-                        <div class="aspect-video rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-105">
-                           <p class="text-2xl font-bold">PROTOCOL CITIES</p>
-                        </div>
-                        <h4 class="text-xl font-semibold">Protocol Cities</h4>
-                        <p class="text-gray-400 text-sm">Episode 02: Building the New World</p>
-                        <span class="text-xs font-bold text-green-400">LIVE</span>
-                    </div>
-                     <!-- Video Card -->
-                    <div class="group cursor-pointer">
-                        <div class="aspect-video rounded-2xl bg-gradient-to-br from-yellow-500 to-orange-500 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-105">
-                           <p class="text-2xl font-bold">AI & AGENCY</p>
-                        </div>
-                        <h4 class="text-xl font-semibold">AI & Agency</h4>
-                        <p class="text-gray-400 text-sm">Episode 03: The Augmentation Thesis</p>
-                        <span class="text-xs font-bold text-yellow-400">PREMIERES Q4</span>
-                    </div>
-                    <!-- Add 3 more placeholder cards -->
-                    <div class="group cursor-pointer"><div class="aspect-video rounded-2xl bg-gray-800 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-105"><p class="text-xl font-bold text-gray-500">COMING SOON</p></div><h4 class="text-xl font-semibold text-gray-600">Untitled Project</h4><p class="text-gray-500 text-sm">Episode 04</p></div>
-                    <div class="group cursor-pointer"><div class="aspect-video rounded-2xl bg-gray-800 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-105"><p class="text-xl font-bold text-gray-500">COMING SOON</p></div><h4 class="text-xl font-semibold text-gray-600">Untitled Project</h4><p class="text-gray-500 text-sm">Episode 05</p></div>
-                    <div class="group cursor-pointer"><div class="aspect-video rounded-2xl bg-gray-800 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-105"><p class="text-xl font-bold text-gray-500">COMING SOON</p></div><h4 class="text-xl font-semibold text-gray-600">Untitled Project</h4><p class="text-gray-500 text-sm">Episode 06</p></div>
-                </div>
-            </div>
-        </section>
+  <!-- Hero -->
+  <section class="relative overflow-hidden pt-28 md:pt-32">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-[radial-gradient(1000px_400px_at_50%_-50%,rgba(255,255,255,0.14),transparent)]"></div>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7">
+          <h1 class="reveal text-4xl md:text-6xl leading-[1.05] font-[700] tracking-tight">Rewrite the code.<br /><span class="text-white/60">Enter the paradigm.</span></h1>
+          <p class="reveal mt-6 text-base md:text-lg text-white/70 max-w-2xl">*Paradigm is a sovereign operating system for life, commerce, and culture—built on clarity, leverage, and irreplaceable craft. This is the front door to the empire.</p>
 
-        <!-- Testimonials Strip -->
-        <section id="testimonials" class="py-24 bg-background-neutral border-t border-b border-sovereign-gold/20">
-            <div class="max-w-7xl mx-auto px-5 sm:px-8">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Testimonial Card -->
-                    <div class="glass-card p-8">
-                        <div class="flex items-center mb-4">
-                            <div class="w-12 h-12 rounded-full bg-cerulean-end flex items-center justify-center font-bold text-xl mr-4">A.</div>
-                            <div>
-                                <p class="font-bold">A., Solo Founder</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-300">"Prep forced me to systemize my day. My shipping throughput doubled."</p>
-                    </div>
-                    <!-- Testimonial Card -->
-                    <div class="glass-card p-8">
-                        <div class="flex items-center mb-4">
-                            <div class="w-12 h-12 rounded-full bg-cerulean-end flex items-center justify-center font-bold text-xl mr-4">M.</div>
-                            <div>
-                                <p class="font-bold">M., Designer</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-300">"The Navigate series changed how I think about off-grid living and local-first tech."</p>
-                    </div>
-                    <!-- Testimonial Card -->
-                    <div class="glass-card p-8">
-                        <div class="flex items-center mb-4">
-                            <div class="w-12 h-12 rounded-full bg-cerulean-end flex items-center justify-center font-bold text-xl mr-4">R.</div>
-                            <div>
-                                <p class="font-bold">R., Film Ops</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-300">"Accelerator gave me true throughput. It's intense, focused, and has zero fluff."</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+          <!-- Email capture (Hero) -->
+          <form id="hero-form" class="reveal mt-8 flex flex-col sm:flex-row gap-3" action="YOUR_N8N_WEBHOOK_URL" method="POST">
+            <label class="sr-only" for="email">Email</label>
+            <input id="email" name="email" type="email" required placeholder="you@domain.com"
+                   class="w-full sm:w-96 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-white/30 ring-focus" />
+            <button type="submit" class="rounded-full bg-white text-black px-6 py-3 font-medium hover:bg-white/90 transition">Enter</button>
+          </form>
 
-        <!-- Roadmap Bar -->
-        <section id="roadmap" class="sticky top-[70px] z-40 bg-sovereign-black/80 backdrop-blur-lg py-4 border-b border-gray-800/50 fade-in-section">
-            <div class="max-w-7xl mx-auto px-5 sm:px-8">
-                <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-4 md:gap-8">
-                    <h3 class="text-sm font-bold uppercase tracking-widest text-sovereign-gold">Roadmap</h3>
-                    <div class="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 text-sm text-gray-400">
-                        <p><span class="font-semibold text-white">Q3:</span> Prep v1 • Navigate Pilot</p>
-                        <p><span class="font-semibold text-white">Q4:</span> Immerse Waitlist • Accelerator Cohort 01</p>
-                        <p><span class="font-semibold text-white">Q1 '25:</span> OS Devlog Begins</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Placeholder Sections for Subpages -->
-        <div class="space-y-24 py-24">
-            <section id="prep" class="max-w-4xl mx-auto px-5 sm:px-8 text-center">
-                <h2 class="text-4xl font-bold mb-4">Install disciplines that compound.</h2>
-                <p class="text-lg text-gray-400 mb-12">Prep is a guided installation of the core systems required for sovereign operation.</p>
-                <div class="grid grid-cols-2 md:grid-cols-5 gap-4 text-left mb-12">
-                     <div class="glass-card p-4 rounded-xl"><h4 class="font-bold">Systems</h4><p class="text-xs text-gray-400">Daily, weekly, monthly.</p></div>
-                     <div class="glass-card p-4 rounded-xl"><h4 class="font-bold">Attention</h4><p class="text-xs text-gray-400">Focus & flow.</p></div>
-                     <div class="glass-card p-4 rounded-xl"><h4 class="font-bold">Templates</h4><p class="text-xs text-gray-400">Repeatable excellence.</p></div>
-                     <div class="glass-card p-4 rounded-xl"><h4 class="font-bold">Feedback Loop</h4><p class="text-xs text-gray-400">Review & iterate.</p></div>
-                     <div class="glass-card p-4 rounded-xl"><h4 class="font-bold">Scoreboard</h4><p class="text-xs text-gray-400">Measure what matters.</p></div>
-                </div>
-                <a href="#footer" class="btn btn-gradient">Enroll Now</a>
-            </section>
-
-            <section id="immerse" class="max-w-4xl mx-auto px-5 sm:px-8 text-center">
-                <h2 class="text-4xl font-bold mb-4">Live the new paradigm.</h2>
-                <p class="text-lg text-gray-400 mb-12">Immerse is a series of in-person retreats and gatherings for operators to train, build, and connect.</p>
-                <div class="glass-card p-8 md:p-12 text-left mb-12">
-                    <h3 class="text-3xl font-bold mb-2">The Citadel</h3>
-                    <p class="text-gray-300 mb-6">A 7-day deep dive into physical sovereignty, local-first tech, and network building. Limited to 24 operators.</p>
-                    <a href="#footer" class="btn btn-gradient">Join Waitlist</a>
-                </div>
-            </section>
-            
-            <section id="accelerate" class="max-w-4xl mx-auto px-5 sm:px-8 text-center">
-                <h2 class="text-4xl font-bold mb-4">Turn ambition into throughput.</h2>
-                <p class="text-lg text-gray-400 mb-12">A 6-week, high-intensity sprint for operators focused on shipping a specific, measurable outcome.</p>
-                <div class="flex flex-col md:flex-row justify-between items-center gap-8 text-left mb-12">
-                    <div class="text-center"><p class="text-2xl font-bold">Weeks 1-2</p><p class="text-gray-400">System Setup</p></div>
-                    <div class="text-2xl text-gray-600">→</div>
-                    <div class="text-center"><p class="text-2xl font-bold">Weeks 3-4</p><p class="text-gray-400">Execution Sprints</p></div>
-                    <div class="text-2xl text-gray-600">→</div>
-                    <div class="text-center"><p class="text-2xl font-bold">Weeks 5-6</p><p class="text-gray-400">Review & Scale</p></div>
-                </div>
-                 <a href="#footer" class="btn btn-gradient">Get Notified for Cohort 01</a>
-            </section>
-
-            <section id="operate" class="max-w-4xl mx-auto px-5 sm:px-8 text-center">
-                <h2 class="text-4xl font-bold mb-4">Paradigm OS</h2>
-                <p class="text-lg text-gray-400 mb-12">Integrate everything you’ve built.</p>
-                <div class="glass-card p-8 text-left mb-8">
-                    <h3 class="text-2xl font-bold mb-4">Philosophy</h3>
-                    <p class="text-gray-300">A local-first, privacy-by-default OS for sovereign living. We’re building the bridge between your tools, your data, and your sovereignty. No clouds, no subscriptions, no compromises.</p>
-                </div>
-                 <a href="#footer" class="btn btn-gradient">Follow Devlog</a>
-            </section>
+          <div class="reveal mt-4 flex items-center gap-3 text-xs text-white/50">
+            <span class="h-1 w-1 rounded-full bg-white/40"></span>
+            No spam. Route updates, releases, and first-access to drops.
+          </div>
         </div>
 
-    </main>
+        <div class="reveal lg:col-span-5">
+          <!-- Decorative “console” card -->
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-5 shadow-soft">
+            <div class="flex items-center gap-2 text-xs text-white/50">
+              <span class="h-2 w-2 rounded-full bg-white/40"></span>
+              <span>console</span>
+              <span class="text-white/30">/</span>
+              <span class="text-white/70">gateway</span>
+            </div>
+            <pre class="mt-3 overflow-x-auto text-sm leading-relaxed text-white/80"><code>$ whoami
+✶  Sovereign operator
 
-    <!-- Footer -->
-    <footer id="footer" class="bg-background-neutral border-t border-gray-800/50 py-16">
-        <div class="max-w-7xl mx-auto px-5 sm:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-                <!-- Column 1: Logo & Ethos -->
-                <div class="md:col-span-2">
-                    <h3 class="text-xl font-bold tracking-wider mb-4">ENTER<span style="color: var(--sovereign-gold);">PARADIGM</span></h3>
-                    <p class="text-gray-400 max-w-sm">An operating system for human potential, designed for sovereign individuals who build the future.</p>
-                </div>
-                <!-- Column 2: Quick Links -->
-                <div>
-                    <h4 class="font-semibold mb-4">Pillars</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#prep" class="hover:text-white transition-colors">Prep</a></li>
-                        <li><a href="#navigate-preview" class="hover:text-white transition-colors">Navigate</a></li>
-                        <li><a href="#immerse" class="hover:text-white transition-colors">Immerse</a></li>
-                        <li><a href="#accelerate" class="hover:text-white transition-colors">Accelerate</a></li>
-                        <li><a href="#operate" class="hover:text-white transition-colors">Operate</a></li>
-                    </ul>
-                </div>
-                <!-- Column 3: Dispatch Signup -->
-                <div>
-                    <h4 class="font-semibold mb-4">Dispatch Signup</h4>
-                    <p class="text-sm text-gray-400 mb-4">Get updates, devlogs, and new releases.</p>
-                    <form action="#" method="POST">
-                        <div class="flex flex-col space-y-2">
-                            <input type="email" placeholder="your@email.com" class="bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 focus:ring-2 focus:ring-cerulean-start focus:outline-none transition-shadow">
-                            <button type="submit" class="btn btn-gradient text-sm">Subscribe</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="mt-12 pt-8 border-t border-gray-800/50 text-center text-xs text-gray-500">
-                <p>EnterParadigm v0.1 — “Forge”</p>
-            </div>
+$ uname -n
+✶  *Paradigm // Enter Paradigm
+
+$ mission
+✶  Clarify → Route → Convert → Compound
+
+$ enter
+→  /prep   /os   /alpha   /living   /impact</code></pre>
+          </div>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
+  <!-- Architecture Router -->
+  <section id="architecture" class="relative py-20 md:py-28">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="reveal flex items-end justify-between gap-6">
+        <h2 class="text-2xl md:text-3xl font-[700] tracking-tight">Architecture</h2>
+        <a href="#join" class="hidden md:inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition">
+          Get access
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
 
-        // Intersection Observer for fade-in animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                }
-            });
-        }, {
-            threshold: 0.1
+      <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- PREP -->
+        <a href="#join" class="reveal group rounded-2xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition shadow-soft">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-semibold">✶Prep</h3>
+            <div class="rounded-full border border-white/15 p-2 group-hover:bg-white group-hover:text-black transition">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <p class="mt-2 text-sm text-white/70">Education and sovereign learning. Train operators. Build signal. Deploy in the real world.</p>
+        </a>
+
+        <!-- OS -->
+        <a href="#join" class="reveal group rounded-2xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition shadow-soft">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-semibold">✶OS</h3>
+            <div class="rounded-full border border-white/15 p-2 group-hover:bg-white group-hover:text-black transition">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <p class="mt-2 text-sm text-white/70">Tech, compute, and AI micro-services. Local-first sovereignty with elegant interfaces.</p>
+        </a>
+
+        <!-- ALPHA -->
+        <a href="#join" class="reveal group rounded-2xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition shadow-soft">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-semibold">✶Alpha</h3>
+            <div class="rounded-full border border-white/15 p-2 group-hover:bg-white group-hover:text-black transition">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <p class="mt-2 text-sm text-white/70">Finance, trading, and operator capital. Accuracy over speed. Compounding over noise.</p>
+        </a>
+
+        <!-- LIVING -->
+        <a href="#join" class="reveal group rounded-2xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition shadow-soft">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-semibold">✶Living</h3>
+            <div class="rounded-full border border-white/15 p-2 group-hover:bg-white group-hover:text-black transition">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <p class="mt-2 text-sm text-white/70">Real estate, nodes, retreats. House-within-greenhouse aesthetics. Hospitality as discipline.</p>
+        </a>
+
+        <!-- IMPACT -->
+        <a href="#join" class="reveal group rounded-2xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition shadow-soft">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-semibold">✶Impact</h3>
+            <div class="rounded-full border border-white/15 p-2 group-hover:bg-white group-hover:text-black transition">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <p class="mt-2 text-sm text-white/70">Culture, influence, and world change. Taste as a public good. Myth made practical.</p>
+        </a>
+
+        <!-- Router CTA -->
+        <div class="reveal rounded-2xl border border-white/10 bg-gradient-to-b from-white/10 to-white/0 p-6 shadow-soft flex flex-col justify-between">
+          <div>
+            <h3 class="text-lg font-semibold">Your route starts here</h3>
+            <p class="mt-2 text-sm text-white/70">Pick a lane today; build the rest as compounding layers.</p>
+          </div>
+          <a href="#join" class="mt-6 inline-flex items-center justify-center rounded-full bg-white text-black px-5 py-3 text-sm font-medium hover:bg-white/90 transition">
+            Enter the Paradigm
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Myth / Narrative -->
+  <section id="myth" class="relative py-20 md:py-28 border-y border-white/10">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div class="reveal space-y-6">
+        <p class="text-white/80 text-lg leading-relaxed">
+          *Paradigm is not a company; it is an operating system for sovereign living. Your mind is a fortress; your time is a divine resource. We move only from zones of irreplaceable leverage, where craft compounds and culture coheres.
+        </p>
+        <p class="text-white/70 leading-relaxed">
+          The ✶ is our glyph: asterisk as emphasis, gateway, and hidden layer. Color is narrative; identity is monochrome. We mint leaders, not followers—and our work radiates timeless taste: not trend, but truth with swagger.
+        </p>
+        <p class="text-white/60 leading-relaxed">
+          Architecture → Action → Afterglow. Learn in public, build in private, deliver with accuracy. Speed for survival; patience for empire.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Join / Conversion -->
+  <section id="join" class="relative py-20 md:py-28">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <div class="reveal rounded-2xl border border-white/10 bg-white/5 p-8 md:p-10 shadow-soft">
+        <div class="md:flex md:items-center md:justify-between gap-8">
+          <div class="max-w-2xl">
+            <h3 class="text-2xl font-[700] tracking-tight">Enter the Paradigm</h3>
+            <p class="mt-3 text-white/70">Get first access to drops, *Prep cohorts, OS utilities, and field notes from the build.</p>
+          </div>
+          <form id="join-form" class="mt-6 md:mt-0 flex flex-col sm:flex-row gap-3 w-full sm:w-auto" action="YOUR_N8N_WEBHOOK_URL" method="POST">
+            <label class="sr-only" for="join-email">Email</label>
+            <input id="join-email" name="email" type="email" required placeholder="you@domain.com"
+                   class="w-full sm:w-96 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-white/30 ring-focus" />
+            <button type="submit" class="rounded-full bg-white text-black px-6 py-3 font-medium hover:bg-white/90 transition">Join</button>
+          </form>
+        </div>
+        <div id="join-success" class="hidden mt-4 text-sm text-emerald-300/90">You’re in. Check your inbox.</div>
+        <div id="join-error" class="hidden mt-4 text-sm text-red-300/90">Something went off-code. Try again.</div>
+      </div>
+
+      <!-- Social proof / handles -->
+      <div class="reveal mt-8 flex flex-wrap items-center gap-4 text-sm text-white/60">
+        <span class="text-white/40">Find us</span>
+        <a href="https://instagram.com/enterparadigm" target="_blank" class="inline-flex items-center gap-2 hover:text-white transition">
+          <!-- IG -->
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Z" stroke="currentColor" stroke-width="1.5"/><path d="M12 8.5A3.5 3.5 0 1 1 8.5 12 3.5 3.5 0 0 1 12 8.5Z" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          @enterparadigm
+        </a>
+        <a href="https://x.com/enterparadigm" target="_blank" class="inline-flex items-center gap-2 hover:text-white transition">
+          <!-- X -->
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4l16 16M20 4 4 20" stroke="currentColor" stroke-width="1.5"/></svg>
+          /enterparadigm
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <div class="h-7 w-7 rounded-2xl bg-white text-black grid place-items-center shadow-soft">
+          <span class="text-lg leading-none asterisk">✶</span>
+        </div>
+        <div class="text-sm text-white/70">Own your future.</div>
+      </div>
+      <div class="text-xs text-white/40">
+        © <span id="year"></span> *Paradigm. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // UTM capture
+    (function captureUTM(){
+      const params = new URLSearchParams(location.search);
+      const utm = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+      const bag = {};
+      utm.forEach(k => { if (params.get(k)) bag[k] = params.get(k); });
+      if (Object.keys(bag).length) {
+        localStorage.setItem('utm', JSON.stringify(bag));
+      }
+    })();
+
+    // AJAX subscribe handler (hero + join forms)
+    async function handleSubscribe(form, successElId, errorElId){
+      const successEl = document.getElementById(successElId);
+      const errorEl = document.getElementById(errorElId);
+
+      const data = Object.fromEntries(new FormData(form).entries());
+      // attach UTM/data layer
+      try {
+        const utm = JSON.parse(localStorage.getItem('utm') || '{}');
+        data.utm = utm;
+        data.path = location.pathname + location.search + location.hash;
+      } catch(e) {}
+
+      try {
+        const res = await fetch(form.getAttribute('action'), {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+          mode: 'cors',
+          credentials: 'omit'
         });
+        if (!res.ok) throw new Error('Bad response');
+        if (successEl) successEl.classList.remove('hidden');
+        if (errorEl) errorEl.classList.add('hidden');
+        form.reset();
+      } catch (err) {
+        if (successEl) successEl.classList.add('hidden');
+        if (errorEl) errorEl.classList.remove('hidden');
+      }
+    }
 
-        const sections = document.querySelectorAll('.fade-in-section');
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-    </script>
+    const heroForm = document.getElementById('hero-form');
+    heroForm && heroForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      handleSubscribe(heroForm, 'join-success', 'join-error');
+    });
+
+    const joinForm = document.getElementById('join-form');
+    joinForm && joinForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      handleSubscribe(joinForm, 'join-success', 'join-error');
+    });
+  </script>
 </body>
 </html>
